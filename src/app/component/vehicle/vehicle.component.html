@@ -1,92 +1,45 @@
 <div class="container">
-    <form autocomplete="off">
-
-        <div class="p-grid">
-            <div class="p-col-12">
-                <h1>Tinnova Veiculo</h1>
-            </div>
-
-            <div class="p-col-12 p-md-3 p-fluid">
-                <label>Id</label>
-                <input pInputText type="text" [(ngModel)]="vehicle.id" name="id" disabled>
-            </div>
-
-            <div class="p-col-12 p-md-3 p-fluid">
-                <label>Marca</label>
-                <p-dropdown [options]="brands" optionLabel="name" optionValue="code" [(ngModel)]="vehicle.brand"
-                    name="brand"></p-dropdown>
-            </div>
-
-            <div class="p-col-12 p-md-3 p-fluid">
-                <label>Ano</label>
-                <p-inputMask [(ngModel)]="vehicle.yearManufacture" mask="9999" name="year"></p-inputMask>
-            </div>
-
-            <div class="p-col-12 p-md-3 p-fluid">
-                <label>Vendido</label>
-                <p-dropdown [options]="isSold" optionLabel="name" optionValue="code" [(ngModel)]="vehicle.sold"
-                    name="sold">
-                </p-dropdown>
-            </div>
-
-            <div class="p-col-12 p-md-12 p-fluid">
-                <label>Descrição</label>
-                <input pInputText type="text" [(ngModel)]="vehicle.description" name="description" maxlength="256">
-            </div>
-
-            <div class="p-col-1">
-                <button pButton label="Salvar" (click)="save()"></button>
-            </div>
-
-            <div class="p-col-11">
-                <button pButton label="Novo" class="p-button-info" (click)="clearRegister()"></button>
-            </div>
-        </div>
-
-    </form>
-
     <div class="p-grid">
-
         <div class="p-col-12">
-            <h1>Lista de veiculos cadastrados</h1>
-        </div>
-
-        <div class="p-col-12 p-md-2 p-fluid">
-            <label>Vendido</label>
-            <p-dropdown [options]="isSoldSearch" optionLabel="name" optionValue="code"
-                [(ngModel)]="vehicleFilterDto.sold" name="soldSearch"></p-dropdown>
-        </div>
-
-        <div class="p-col-12 p-md-2 p-fluid">
-            <label>Decada</label>
-            <p-inputMask [(ngModel)]="vehicleFilterDto.decade" mask="99" name="decada"></p-inputMask>
-        </div>
-
-        <div class="p-col-12 p-md-2 p-fluid">
-            <label>Marca</label>
-            <p-dropdown [options]="brands" optionLabel="name" optionValue="code" [(ngModel)]="vehicleFilterDto.brand"
-                name="brandSearch"></p-dropdown>
-        </div>
-
-        <div class="p-col-12 p-md-2 p-fluid">
-            <label>Registrado última semana</label>
-            <p-dropdown [options]="isRegisteredLasWeek" optionLabel="name" optionValue="code"
-                [(ngModel)]="vehicleFilterDto.registeredLasWeek" name="registeredRecently">
-            </p-dropdown>
-        </div>
-
-        <div class="p-col-1">
-            <button pButton label="Buscar" class="p-button-info" (click)="findByFilter()"
-                style="margin-top: 17px;"></button>
-        </div>
-
-        <div class="p-col-2">
-            <button pButton label="Limpar Filtro" class="p-button-info" (click)="clearFilter()"
-                style="margin-top: 17px;"></button>
-        </div>
-
-        <div class="p-col-12">
-            <p-table #paginator [value]="vehicles" [paginator]="true" [rows]="2">
+            <p-table #paginator [value]="vehicles" [paginator]="true" [rows]="2" styleClass="p-datatable-gridlines">
+                <ng-template pTemplate="caption">
+                    <h2>Tinnova veiculos</h2>
+                    <div class="p-grid">
+                        <div class="p-col-12 p-md-2 p-fluid">
+                            <label>Vendido</label>
+                            <p-dropdown [options]="isSoldSearch" optionLabel="name" optionValue="code"
+                                [(ngModel)]="vehicleFilterDto.sold" name="soldSearch"></p-dropdown>
+                        </div>
+                
+                        <div class="p-col-12 p-md-2 p-fluid">
+                            <label>Decada</label>
+                            <p-inputMask [(ngModel)]="vehicleFilterDto.decade" mask="99" name="decada"></p-inputMask>
+                        </div>
+                
+                        <div class="p-col-12 p-md-2 p-fluid">
+                            <label>Marca</label>
+                            <p-dropdown [options]="brands" optionLabel="name" optionValue="code" [(ngModel)]="vehicleFilterDto.brand"
+                                name="brandSearch"></p-dropdown>
+                        </div>
+                
+                        <div class="p-col-12 p-md-2 p-fluid">
+                            <label>Criado última semana</label>
+                            <p-dropdown [options]="isRegisteredLasWeek" optionLabel="name" optionValue="code"
+                                [(ngModel)]="vehicleFilterDto.registeredLasWeek" name="registeredRecently">
+                            </p-dropdown>
+                        </div>
+                
+                        <div class="p-col-1">
+                            <button pButton label="Buscar" class="p-button" icon="pi pi-search" (click)="findByFilter()"
+                                style="margin-top: 20px;"></button>
+                        </div>
+                
+                        <div class="p-col-2">
+                            <button pButton label="Limpar Filtro" class="p-button" icon="pi pi-trash" (click)="clearFilter()"
+                                style="margin-top: 20px; margin-left: 20px;"></button>
+                        </div>
+                    </div>
+                </ng-template>
                 <ng-template pTemplate="header">
                     <tr>
                         <th>Veiculo</th>
@@ -123,11 +76,12 @@
                             <span class="p-column-title">Data modificação</span> {{ vehicle.modificationDate }}
                         </td>
                         <td class="col-acoes">
-                            <span class="p-column-title"></span>
-                            <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                                (click)="selectVehicle(vehicle)"></a>
+                            <button pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+                                (click)="selectVehicle(vehicle)" style="margin-right: 15px;">
+                            </button>
                             <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
-                                (click)="deleteVehicle(vehicle.id)" style="margin-left: 5px;"></button>
+                                (click)="deleteVehicle(vehicle.id)">
+                            </button>
                         </td>
                     </tr>
                 </ng-template>
@@ -135,7 +89,10 @@
         </div>
 
         <div class="p-col-6">
-            <p-table #paginator [value]="quantityPerBrandsDtos" [paginator]="true" [rows]="2">
+            <p-table #paginator [value]="quantityPerBrandsDtos" [paginator]="true" [rows]="1" styleClass="p-datatable-gridlines">
+                <ng-template pTemplate="caption">
+                    Quantidade de veiculos por marcas 
+                </ng-template>
                 <ng-template pTemplate="header">
                     <tr>
                         <th>Marca</th>
@@ -156,7 +113,10 @@
         </div>
 
         <div class="p-col-6">
-            <p-table #paginator [value]="vehiclesPerDecadeDtos" [paginator]="true" [rows]="2">
+            <p-table #paginator [value]="vehiclesPerDecadeDtos" [paginator]="true" [rows]="1" styleClass="p-datatable-gridlines">
+                <ng-template pTemplate="caption">
+                    Quantidade de veiculos por decadas 
+                </ng-template>
                 <ng-template pTemplate="header">
                     <tr>
                         <th>Decada</th>
@@ -174,6 +134,55 @@
                     </tr>
                 </ng-template>
             </p-table>
+        </div>
+
+        <div class="p-col-6">
+            <p-dialog header={{titleModal}} [(visible)]="display">
+                <form autocomplete="off">
+
+                    <div class="p-grid">
+            
+                        <div class="p-col-12 p-md-3 p-fluid">
+                            <label>Id</label>
+                            <input pInputText type="text" [(ngModel)]="vehicle.id" name="id" disabled>
+                        </div>
+            
+                        <div class="p-col-12 p-md-3 p-fluid">
+                            <label>Marca</label>
+                            <p-dropdown [options]="brands" optionLabel="name" optionValue="code" [(ngModel)]="vehicle.brand"
+                                name="brand"></p-dropdown>
+                        </div>
+            
+                        <div class="p-col-12 p-md-3 p-fluid">
+                            <label>Ano</label>
+                            <p-inputMask [(ngModel)]="vehicle.yearManufacture" mask="9999" name="year"></p-inputMask>
+                        </div>
+            
+                        <div class="p-col-12 p-md-3 p-fluid">
+                            <label>Vendido</label>
+                            <p-dropdown [options]="isSold" optionLabel="name" optionValue="code" [(ngModel)]="vehicle.sold"
+                                name="sold">
+                            </p-dropdown>
+                        </div>
+            
+                        <div class="p-col-12 p-md-12 p-fluid">
+                            <label>Descrição</label>
+                            <input pInputText type="text" [(ngModel)]="vehicle.description" name="description" maxlength="256">
+                        </div>
+            
+                        <div class="p-col-1">
+                            <button pButton label="Salvar" (click)="save()"></button>
+                        </div>
+            
+                        <div class="p-col-11">
+                            <button pButton label="Novo" class="p-button" (click)="clearRegister()"></button>
+                        </div>
+                    </div>
+            
+                </form>
+            </p-dialog>
+            
+            <button pButton type="button" (click)="showModalRegisterVehicle()" icon="pi pi-plus" label="Cadastrar"></button>
         </div>
 
     </div>

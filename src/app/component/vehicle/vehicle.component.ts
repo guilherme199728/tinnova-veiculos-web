@@ -19,12 +19,14 @@ export class VehicleComponent implements OnInit {
   brands: Array<BrandDto> = new Array<BrandDto>;
   vehiclesPerDecadeDtos = [];
   quantityPerBrandsDtos = [];
-  isEditing = false;
+  isEditing: boolean = false;
+  display: boolean = false;
   vehicle: Vehicle = new Vehicle();
   vehicleFilterDto: VehicleFilterDto = new VehicleFilterDto();
   isSold = this.defaultBooleanOptions()
   isSoldSearch = this.defaultBooleanOptions()
   isRegisteredLasWeek = this.defaultBooleanOptions();
+  titleModal = "Cadastrar novo veiculo";
 
   constructor(
     private vehicleService: VehicleService,
@@ -39,6 +41,14 @@ export class VehicleComponent implements OnInit {
     this.defaultValuesFilter();
     this.findTotalVehiclePerDecade();
     this.findTotalVehiclePerBrands();
+  }
+
+  showModalRegisterVehicle() {
+    if (this.isEditing) {
+      this.titleModal = "Editar veiculo";
+    }
+
+    this.display = true;
   }
 
   message(mensagem: string, tipoMensagem: string) {
@@ -97,7 +107,7 @@ export class VehicleComponent implements OnInit {
   selectVehicle(veiculo: Vehicle) {
     this.vehicle = veiculo;
     this.isEditing = true;
-    this.message('Veiculo selecionado!', 'success');
+    this.showModalRegisterVehicle();
   }
 
   deleteVehicle(id: number) {
@@ -115,7 +125,7 @@ export class VehicleComponent implements OnInit {
     }
   }
 
-  loadBrandsDropdown() {    
+  loadBrandsDropdown() {
     this.vehicleService.findBrands().then(brands => {
 
       brands.forEach((brand: any) => {
@@ -151,7 +161,7 @@ export class VehicleComponent implements OnInit {
 
   defaultValuesFilter() {
     this.vehicleFilterDto.sold = false;
-    this.vehicleFilterDto.registeredLasWeek = false; 
+    this.vehicleFilterDto.registeredLasWeek = false;
   }
 
   getTotalVehiclesPerBrand() {

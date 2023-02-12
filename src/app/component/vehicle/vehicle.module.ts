@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { InputMaskModule } from 'primeng/inputmask';
 import { ToastModule } from 'primeng/toast';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ToastModule } from 'primeng/toast';
     BrowserAnimationsModule,
     NoopAnimationsModule,
     InputMaskModule,
-    ToastModule
+    ToastModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [VehicleComponent]

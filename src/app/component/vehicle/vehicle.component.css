@@ -1,32 +1,4 @@
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #404C51;
-}
-
-label {
-    font-weight: bold;
-}
-
-@media (min-width: 1200px) {
-    .container {
-        width: 1170px;
-        margin: 0 auto;
-    }
-}
-
-.col-valor-header {
-    width: 120px;
-}
-
-.col-valor-content {
-    text-align: right;
-}
-
-.col-data-header {
-    width: 120px;
-}
-
-.col-data-content {
-    text-align: center;
+.container {
+    width: 1170px;
+    margin: 0 auto;
 }
