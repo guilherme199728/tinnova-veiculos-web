@@ -2,10 +2,10 @@
 Este projeto foi criado com o objetivo de realizar uma avaliação técnica para a empresa Tinnova.
 
 # Versões
-[Angular CLI](https://github.com/angular/angular-cli) - 15.1.5
-[PrimeNG](https://primeng.org/) - 15.2.0 
-[PrimeFlex](https://primeng.org/) - 2.0.0
-[PrimeIcons](https://primeng.org/) - 6.0.1 
+[Angular CLI](https://github.com/angular/angular-cli) - 15.1.5  
+[PrimeNG](https://primeng.org/) - 15.2.0   
+[PrimeFlex](https://primeng.org/) - 2.0.0  
+[PrimeIcons](https://primeng.org/) - 6.0.1   
 
 # Servidor de desenvolvimento
 Execute o comando ng serve para iniciar um servidor de desenvolvimento. Navegue até http://localhost:4200/. A aplicação será recarregada automaticamente se você alterar qualquer um dos arquivos de origem.
