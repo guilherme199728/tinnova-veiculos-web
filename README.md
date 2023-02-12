@@ -1,5 +1,5 @@
 # Tinnova Veículos Web
-Este projeto foi criado com o objetivo de realizar uma avaliação técnica para a empresa Tinnova.
+Este projeto foi criado com o objetivo de realizar uma avaliação técnica para a empresa Tinnova. É uma pagina web feita em Angular
 
 # Versões
 [Angular CLI](https://github.com/angular/angular-cli) - 15.1.5  
