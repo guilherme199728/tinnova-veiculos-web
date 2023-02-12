@@ -8,10 +8,10 @@ Este projeto foi criado com o objetivo de realizar uma avaliação técnica para
 [PrimeIcons](https://primeng.org/) - 6.0.1   
 
 # Servidor de desenvolvimento
-Execute o comando ng serve para iniciar um servidor de desenvolvimento. Navegue até http://localhost:4200/. A aplicação será recarregada automaticamente se você alterar qualquer um dos arquivos de origem.
+Execute o comando `ng serve` para iniciar um servidor de desenvolvimento. Navegue até http://localhost:4200/. A aplicação será recarregada automaticamente se você alterar qualquer um dos arquivos de origem.
 
 # Compilação
-Execute o comando ng build para compilar o projeto. Os artefatos da compilação serão armazenados no diretório dist/.
+Execute o comando `ng build` para compilar o projeto. Os artefatos da compilação serão armazenados no diretório `dist/`.
 
 # Interface grafica
 ![Captura de tela_20230212_071528](https://user-images.githubusercontent.com/37274014/218305564-cff4a9f1-5e7d-4765-8018-a3152286162a.png)
